@@ -2,217 +2,127 @@
 
 ---
 
+## ⚙️ **Yêu cầu môi trường & Hướng dẫn cài đặt**
+
+### 🔧 **Phiên bản yêu cầu:**
+- **Node.js:** v20.17.0
+- **pnpm:** v9.9.0
+- **Trình duyệt hỗ trợ:** Chrome, Firefox, Edge (phiên bản mới nhất)
+
+### 💻 **Cách cài đặt Node.js**
+
+#### 🔵 **Trên Windows:**
+```bash
+choco install nodejs-lts
+```
+
+#### 🍏 **Trên macOS:**
+```bash
+brew install node@20
+```
+
+#### 🐧 **Trên Linux (Ubuntu/Debian):**
+```bash
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+### 📦 **Cách cài đặt pnpm**
+```bash
+npm install -g pnpm@9.9.0
+```
+
+### 🚀 **Khởi chạy dự án**
+```bash
+pnpm install
+pnpm dev
+```
+
+---
+
 ## 📂 **Cấu trúc thư mục & Quy tắc đặt tên**
 
 ### 🔠 **Quy tắc chung:**
 - **Tên thư mục:** `kebab-case`, số nhiều.
-- **Tên file:**
-  - Theo `kebab-case` (ví dụ: `user-profile.ts`).
-  - Tệp TypeScript kết thúc bằng `.ts` hoặc `.tsx` (nếu có JSX).
+- **Tên file:** `kebab-case` (ví dụ: `user-profile.ts`).
 - **Component:** PascalCase (ví dụ: `UserProfile`).
 - **Interface & Type:** PascalCase (ví dụ: `UserProfileResponse`).
-- **Thư mục có sub-component:** Thêm `_components` chứa các thành phần con.
+- **Sub-component:** `_components` chứa các thành phần con.
+- **Hook:** `useXyz` (ví dụ: `useUserProfile`).
+- **Trang:** `page-name-page.tsx` (ví dụ: `home-page.tsx`).
+- **Layout:** `layout-name-layout.tsx` (ví dụ: `main-layout.tsx`).
+- **Utils:** `[functionality].util.ts` (ví dụ: `date.util.ts`).
+- **Libs:** `[functionality].lib.ts` (ví dụ: `format-string.lib.ts`).
 
-### 📁 **Ví dụ cấu trúc thư mục:**
+### 📁 **Cấu trúc thư mục chi tiết:**
 ```
-├── apis/
-│   ├── users/
-│   │   ├── query/
-│   │   │   ├── protos/
+├── apis/                # Xử lý API
+│   ├── users/           # API module 'users'
+│   │   ├── query/       # Xử lý đọc dữ liệu
 │   │   │   └── user.query.api.ts
-│   │   ├── command/
-│   │   │   ├── protos/
+│   │   ├── command/     # Xử lý ghi dữ liệu
 │   │   │   └── user-role.command.api.ts
-├── assets/
-│   ├── images/
-│   │   ├── bgs/
-│   │   └── icons/
-│   └── svgs/
-├── components/
+│   │   └── protos/      # File gRPC
+│
+├── assets/              # Tài nguyên dự án
+│   ├── images/          # Hình ảnh
+│   │   ├── bgs/         # Backgrounds
+│   │   └── icons/       # Icons
+│   └── svgs/            # File SVG
+│
+├── components/          # Thành phần UI
 │   └── user-profile-component/
 │       ├── user-profile-component.tsx
 │       ├── user-profile-component.module.scss
 │       └── index.ts
-├── config/
+│
+├── config/              # Cấu hình chung
 │   └── api.config.ts
-├── constants/
+│
+├── constants/           # Hằng số dùng chung
 │   └── app.constants.ts
-├── errors/
+│
+├── errors/              # Trang lỗi
 │   └── not-found.tsx
-├── hooks/
+│
+├── hooks/               # Custom hooks
 │   └── use-user-profile.ts
-├── layouts/
+│
+├── layouts/             # Bố cục giao diện
 │   └── main-layout/
 │       ├── main-layout.tsx
 │       ├── main-layout.module.scss
 │       └── index.ts
-├── libs/
+│
+├── libs/                # Thư viện hỗ trợ
 │   └── format-string.lib.ts
-├── pages/
+│
+├── pages/               # Các trang chính
 │   └── home-page/
 │       ├── home-page.tsx
 │       ├── home-page.module.scss
 │       └── index.ts
-├── routers/
+│
+├── routers/             # Cấu hình định tuyến
 │   └── app-router.tsx
-├── shared/
+│
+├── shared/              # Mã dùng chung
 │   └── helpers.ts
-├── types/
+│
+├── types/               # Định nghĩa kiểu dữ liệu
 │   └── users/
 │       ├── responses/user.type.ts
 │       └── requests/user-request.type.ts
-├── utils/
+│
+├── utils/               # Hàm tiện ích
 │   └── date.util.ts
-└── query-client.ts
+│
+└── query-client.ts      # Cấu hình TanStack Query
 ```
 
 ---
 
-## 📡 **APIs**
-
-### 🔧 **Cấu trúc file**
-- **Tên thư mục:** `kebab-case`, số nhiều (ví dụ: `users`).
-- **Bên trong:**
-  - `query/` và `command/`:
-    - `protos/`: chứa file gRPC.
-    - File API: `tên(số ít).[query|command].api.ts` (ví dụ: `user.query.api.ts`).
-
-### 📝 **Quy tắc code**
-- **Export name:** CamelCase (ví dụ: `userQueryApi`).
-- **Tham số:** `body` và `filters`.
-- **Tên phương thức:** Trùng với gRPC.
-- **Type:** Interface trùng tên phương thức trong `types/`.
-
-### 💡 **Ví dụ:**
-```typescript
-export const userQueryApi = async (filters: UserFilters): Promise<UserResponse> => {
-  return grpcClient.userQuery(filters);
-};
-```
-
----
-
-## 🖼️ **Assets**
-
-### 🔧 **Cấu trúc file**
-- **images/**:
-  - `bgs/`: hình nền.
-  - `icons/`: biểu tượng.
-- **svgs/**: file SVG.
-
-### 📝 **Quy tắc đặt tên**
-- `kebab-case` (ví dụ: `user-avatar.png`).
-
-### 💡 **Ví dụ thư mục:**
-```
-assets/
-├── images/
-│   ├── bgs/
-│   │   └── login-background.jpg
-│   └── icons/
-│       └── user-avatar.png
-└── svgs/
-    └── logo.svg
-```
-
----
-
-## 🧩 **Components**
-
-### 🔧 **Cấu trúc file**
-- **Thư mục:** `kebab-case`.
-- **File:**
-  - `[component-name]-component.tsx`
-  - `[component-name]-component.module.scss`
-  - `index.ts`: `export default` component.
-
-### 📝 **Quy tắc code**
-- `export default function` declaration.
-- Props destructuring.
-- Tên rõ ràng, dễ hiểu.
-
-### 💡 **Ví dụ:**
-```tsx
-import React from 'react';
-
-interface ButtonProps {
-  label: string;
-}
-
-export default function MyButtonComponent({ label }: ButtonProps): JSX.Element {
-  return <button>{label}</button>;
-}
-```
-
----
-
-## ⚙️ **Config**
-
-### 📝 **Quy tắc code**
-- Tên file: `kebab-case` + `config`.
-- Export name theo UPPER_SNAKE_CASE.
-
-### 💡 **Ví dụ:**
-```typescript
-export const COMMON_KEY = {
-  LOGO: 'well365-logo',
-  BACKGROUND_MENU_MORE: 'well365-bg-menu-more'
-};
-```
-
----
-
-## ❗ **Errors**
-
-### 📝 **Quy tắc code**
-- Export mặc định.
-- Tên rõ ràng, props destructuring.
-
-### 💡 **Ví dụ:**
-```tsx
-export default function NotFoundPage() {
-  return <h1>404 - Page Not Found</h1>;
-}
-```
-
----
-
-## 🔄 **Hooks**
-
-### 📝 **Quy tắc code**
-- Tên file: `use-[feature].ts`.
-- Tên hook: `useXyz`.
-- Props destructuring.
-
-### 💡 **Ví dụ:**
-```typescript
-export default function useUserProfile(userId: string) {
-  const [profile, setProfile] = useState(null);
-  useEffect(() => {
-    fetch(`/api/users/${userId}`).then(res => res.json()).then(setProfile);
-  }, [userId]);
-  return profile;
-}
-```
-
----
-
-## 🏛️ **Layouts**
-
-### 🔧 **Cấu trúc file**
-- Tên file: `[layout-name]-layout.tsx`.
-- SCSS: `[layout-name]-layout.module.scss`.
-
-### 💡 **Ví dụ:**
-```tsx
-export default function MainLayout({ children }: { children: React.ReactNode }) {
-  return <div className="main-layout">{children}</div>;
-}
-```
-
----
-
-## 🛡️ **Cấu Hình ESLint**
+## 🛡️ **Cấu Hình ESLint & Cách Tránh Lỗi**
 
 ### ⚡ **Cấu hình ESLint**
 ```javascript
@@ -251,6 +161,50 @@ module.exports = {
 };
 ```
 
+### 🚫 **Giải thích & Cách tránh lỗi:**
+- ❌ **Biến không sử dụng:** Thêm `_` trước tên biến.
+- ❌ **Tránh `any`:** Dùng kiểu cụ thể (`string`, `number`).
+- ❌ **Hook sai vị trí:** Gọi ở cấp cao nhất của component.
+- ❌ **JSX không có React:** Không cần import React từ v17.
+- ❌ **Thẻ `<a>` không hợp lệ:** Luôn thêm `href` hoặc dùng `button`.
+
 ---
 
-📌 **Tài liệu đã được bổ sung với các ví dụ cụ thể, cấu trúc thư mục minh họa và quy tắc rõ ràng cho từng mục.** 🚀✨
+## ✍️ **Quy tắc import/export & Tối ưu mã**
+
+### 💡 **Import:**
+```typescript
+import { UserProfile } from '@/components/user-profile-component';
+```
+- ✅ **Dùng alias `@`** cho thư mục gốc.
+- ✅ **Import từ `index.ts`** khi có.
+
+### 💡 **Export:**
+```typescript
+export default function UserProfile() {}
+export const USER_ROLE = 'admin';
+```
+- ✅ **Component:** Dùng export mặc định.
+- ✅ **Hằng số & hàm tiện ích:** Dùng named export.
+
+---
+
+## 📝 **Quy tắc commit message**
+
+### 📜 **Cấu trúc commit:**
+```
+type(scope): subject
+```
+- **type:** feat, fix, chore, refactor, docs.
+- **scope:** phần bị ảnh hưởng (component, page, api).
+- **subject:** mô tả ngắn gọn.
+
+### 💡 **Ví dụ:**
+```bash
+feat(api): thêm chức năng đăng nhập
+fix(component): sửa lỗi giao diện nút đăng ký
+```
+
+---
+
+📌 **Tài liệu đã được cập nhật toàn diện với cấu trúc thư mục rõ ràng, hướng dẫn cài đặt, quy tắc ESLint, chuẩn import/export và quy tắc commit.** 🚀✨
