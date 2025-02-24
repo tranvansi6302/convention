@@ -124,7 +124,7 @@ pnpm dev
 ### 📝 **Giải thích chi tiết:**
 - **apis/**: Chia thành `command` và `query`. File kết thúc bằng `.command.api.ts` hoặc `.query.api.ts`.
 - **assets/**: Tên file `kebab-case`, thư mục con `images`, `svgs`.
-- **components/**: Mỗi component trong thư mục riêng, SCSS kèm theo, `index.ts` để export. Kết thúc bằng -component.tsx`
+- **components/**: Mỗi component trong thư mục riêng, SCSS kèm theo, `index.ts` để export. Kết thúc bằng `-component.tsx`
 - **configs/**: Tất cả file cấu hình kết thúc bằng `.config.ts`.
 - **constants/**: Hằng số dùng chung, kết thúc `.constant.ts`.
 - **errors/**: Quản lý các file xử lý lỗi.
