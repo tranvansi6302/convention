@@ -193,7 +193,7 @@ module.exports = {
 
   ---
 
-  ## 🌿 **Quy tắc Git (Tách nhánh & Commit)**
+## 🌿 **Quy tắc Git (Tách nhánh & Commit)**
 
 ### 🌿 **Tách nhánh (Branching):**
 - **main/master:** Phiên bản sản xuất (production-ready).
@@ -227,6 +227,5 @@ style(layout): điều chỉnh CSS cho header
 - ✅ Sử dụng dấu gạch ngang để phân tách từ trong scope.
 - ✅ Tránh commit code chưa hoàn thiện (sử dụng `WIP` nếu cần thiết).
 
----
 
 
