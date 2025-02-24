@@ -48,7 +48,7 @@ pnpm dev
 - **Component:** PascalCase (ví dụ: `UserProfile`).
 - **Interface & Type:** PascalCase (ví dụ: `UserProfileResponse`).
 - **Sub-component:** `_components` chứa các thành phần con.
-- **Hook:** `useXyz` (ví dụ: `useUserProfile`).
+- **Hook:** `use-name` (ví dụ: `use-user-profile`).
 - **Trang:** `page-name-page.tsx` (ví dụ: `home-page.tsx`).
 - **Layout:** `layout-name-layout.tsx` (ví dụ: `main-layout.tsx`).
 - **Utils:** `[functionality].util.ts` (ví dụ: `date.util.ts`).
@@ -71,19 +71,19 @@ pnpm dev
 │   └── svgs/            # File SVG
 │
 ├── components/          # Thành phần UI
-│   └── user-profile-component/
-│       ├── user-profile-component.tsx
-│       ├── user-profile-component.module.scss
+│   └── my-button/
+│       ├── my-button-component.tsx
+│       ├── my-button-component.module.scss
 │       └── index.ts
 │
 ├── config/              # Cấu hình chung
 │   └── api.config.ts
 │
 ├── constants/           # Hằng số dùng chung
-│   └── app.constants.ts
+│   └── app.constant.ts
 │
-├── errors/              # Trang lỗi
-│   └── not-found.tsx
+├── errors/              # xử lý lỗi
+│   └── error-boundary-handlers
 │
 ├── hooks/               # Custom hooks
 │   └── use-user-profile.ts
