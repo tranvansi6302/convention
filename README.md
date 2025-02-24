@@ -40,7 +40,7 @@ pnpm dev
 
 ---
 
-## 📂 **Cấu trúc thư mục & Quy tắc đặt tên**
+## 📂 **Cấu trúc thư mục & Quy tắc đặt tên (Cập nhật theo hình cung cấp)**
 
 ### 🔠 **Quy tắc chung:**
 - **Tên thư mục:** `kebab-case`, số nhiều.
@@ -48,163 +48,108 @@ pnpm dev
 - **Component:** PascalCase (ví dụ: `UserProfile`).
 - **Interface & Type:** PascalCase (ví dụ: `UserProfileResponse`).
 - **Sub-component:** `_components` chứa các thành phần con.
-- **Hook:** `use-name` (ví dụ: `use-user-profile`).
-- **Trang:** `page-name-page.tsx` (ví dụ: `home-page.tsx`).
+- **Hook:** `useXyz` (ví dụ: `useUserProfile`).
+- **Trang:** `page-name-page.tsx` (ví dụ: `welcome-page.tsx`).
 - **Layout:** `layout-name-layout.tsx` (ví dụ: `main-layout.tsx`).
-- **Utils:** `[functionality].util.ts` (ví dụ: `date.util.ts`).
+- **Utils:** `[functionality].util.ts` (ví dụ: `format.util.ts`).
 - **Libs:** `[functionality].lib.ts` (ví dụ: `format-string.lib.ts`).
 
-### 📁 **Cấu trúc thư mục chi tiết:**
+### 📁 **Cấu trúc thư mục chi tiết (theo hình đã cung cấp):**
 ```
-├── apis/                # Xử lý API
-│   ├── users/           # API module 'users'
-│   │   ├── query/       # Xử lý đọc dữ liệu
-│   │   │   └── user.query.api.ts
-│   │   ├── command/     # Xử lý ghi dữ liệu
-│   │   │   └── user-role.command.api.ts
-│   │   └── protos/      # File gRPC
+├── src/
+│   └── app/
+│       ├── apis/
+│       │   └── users/
+│       │       ├── command/
+│       │       │   ├── protos/
+│       │       │   └── user.command.api.ts
+│       │       └── query/
+│       │           ├── protos/
+│       │           └── user.query.api.ts
+│       │
+│       ├── assets/
+│       │   ├── images/
+│       │   └── svgs/
+│       │
+│       ├── components/
+│       │   └── my-button/
+│       │       ├── my-button-component.module.scss
+│       │       ├── my-button-component.tsx
+│       │       └── index.ts
+│       │
+│       ├── configs/
+│       │   ├── http-status-code.config.ts
+│       │   ├── message.config.ts
+│       │   ├── routes.config.ts
+│       │   └── tanstack-key.config.ts
+│       │
+│       ├── constants/
+│       │   └── file.constant.ts
+│       │
+│       ├── errors/
+│       │   └── error-boundary-handlers/
+│       │       └── error-boundary-handlers.tsx
+│       │
+│       ├── hooks/
+│       │   └── use-responsive.tsx
+│       │
+│       ├── layouts/
+│       │   └── main-layout/
+│       │       ├── main-layout.module.scss
+│       │       ├── main-layout.tsx
+│       │       └── index.ts
+│       │
+│       ├── pages/
+│       │   ├── errors/
+│       │   │   └── error-404-page/
+│       │   │       ├── error-404-page.module.scss
+│       │   │       ├── error-404-page.tsx
+│       │   │       └── index.ts
+│       │   ├── welcome-page/
+│       │   │   ├── welcome-page.module.scss
+│       │   │   ├── welcome-page.tsx
+│       │   │   └── index.ts
+│       │
+│       ├── routes/
+│       │   └── app-route.tsx
+│       │
+│       ├── shared/
+│       │   └── user-example.shared.ts
+│       │
+│       ├── types/
+│       │   ├── commons/
+│       │   │   ├── config-lang/
+│       │   │   └── helpdesk/
+│       │   ├── icons/
+│       │   │   ├── requests/icon.type.ts
+│       │   │   └── responses/icon.type.ts
+│       │   └── menu/
+│       │
+│       ├── utils/
+│       │   ├── api.util.ts
+│       │   ├── format.util.ts
+│       │   └── string.util.ts
+│       │
+│       └── query-client.ts
 │
-├── assets/              # Tài nguyên dự án
-│   ├── images/          # Hình ảnh
-│   │   ├── bgs/         # Backgrounds
-│   │   └── icons/       # Icons
-│   └── svgs/            # File SVG
-│
-├── components/          # Thành phần UI
-│   └── my-button/
-│       ├── my-button-component.tsx
-│       ├── my-button-component.module.scss
-│       └── index.ts
-│
-├── config/              # Cấu hình chung
-│   └── api.config.ts
-│
-├── constants/           # Hằng số dùng chung
-│   └── app.constant.ts
-│
-├── errors/              # xử lý lỗi
-│   └── error-boundary-handlers
-│
-├── hooks/               # Custom hooks
-│   └── use-user-profile.ts
-│
-├── layouts/             # Bố cục giao diện
-│   └── main-layout/
-│       ├── main-layout.tsx
-│       ├── main-layout.module.scss
-│       └── index.ts
-│
-├── libs/                # Thư viện hỗ trợ
-│   └── format-string.lib.ts
-│
-├── pages/               # Các trang chính
-│   └── home-page/
-│       ├── home-page.tsx
-│       ├── home-page.module.scss
-│       └── index.ts
-│
-├── routers/             # Cấu hình định tuyến
-│   └── app-router.tsx
-│
-├── shared/              # Mã dùng chung
-│   └── helpers.ts
-│
-├── types/               # Định nghĩa kiểu dữ liệu
-│   └── users/
-│       ├── responses/user.type.ts
-│       └── requests/user-request.type.ts
-│
-├── utils/               # Hàm tiện ích
-│   └── date.util.ts
-│
-└── query-client.ts      # Cấu hình TanStack Query
+└── App.tsx
 ```
+
+### 📝 **Phân tích cấu trúc thư mục:**
+- ✅ **apis/**: Tổ chức đúng theo tiêu chuẩn với thư mục `command` và `query`, mỗi phần đều chứa `protos` và file API tương ứng.
+- ✅ **assets/**: Chia rõ ràng giữa `images/` và `svgs/`.
+- ✅ **components/**: Mỗi component nằm trong thư mục riêng, có file SCSS và `index.ts` để export.
+- ✅ **configs/**: Tên file theo chuẩn `kebab-case`, kết thúc bằng `.config.ts`.
+- ✅ **constants/**: Lưu trữ hằng số với tên file rõ ràng (`file.constant.ts`).
+- ✅ **errors/**: Xử lý lỗi với cấu trúc rõ ràng, hỗ trợ `error-boundary-handlers`.
+- ✅ **hooks/**: Tên hook tuân theo quy tắc `use-xyz`.
+- ✅ **layouts/**: Bố cục rõ ràng với file SCSS và `index.ts`.
+- ✅ **pages/**: Mỗi trang có thư mục riêng, file chính `page-name.tsx` và SCSS tương ứng.
+- ✅ **routes/**: Cấu hình định tuyến tập trung trong `app-route.tsx`.
+- ✅ **shared/**: Chứa mã nguồn dùng chung (`user-example.shared.ts`).
+- ✅ **types/**: Tổ chức rõ ràng, phân tách `requests`, `responses`.
+- ✅ **utils/**: Các hàm tiện ích được đặt tên theo chuẩn `[functionality].util.ts`.
 
 ---
 
-## 🛡️ **Cấu Hình ESLint & Cách Tránh Lỗi**
-
-### ⚡ **Cấu hình ESLint**
-```javascript
-module.exports = {
-  root: true,
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module',
-    ecmaFeatures: { jsx: true }
-  },
-  settings: {
-    react: { version: 'detect' },
-    'import/resolver': { typescript: {} }
-  },
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier',
-    'plugin:prettier/recommended'
-  ],
-  plugins: ['react', 'react-hooks', '@typescript-eslint', 'import', 'jsx-a11y', 'prettier'],
-  rules: {
-    'no-undef': 'error',
-    '@typescript-eslint/no-require-imports': 'error',
-    'prettier/prettier': 'warn',
-    'react/prop-types': 'off',
-    'react/react-in-jsx-scope': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-explicit-any': 'error',
-    '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-    'react-hooks/rules-of-hooks': 'error',
-    'jsx-a11y/anchor-is-valid': 'warn'
-  }
-};
-```
-
-### 🚫 **Giải thích & Cách tránh lỗi:**
-- ❌ **Biến không sử dụng:** Thêm `_` trước tên biến.
-- ❌ **Tránh `any`:** Dùng kiểu cụ thể (`string`, `number`).
-- ❌ **Hook sai vị trí:** Gọi ở cấp cao nhất của component.
-- ❌ **JSX không có React:** Không cần import React từ v17.
-- ❌ **Thẻ `<a>` không hợp lệ:** Luôn thêm `href` hoặc dùng `button`.
-
----
-
-## ✍️ **Quy tắc import/export & Tối ưu mã**
-
-### 💡 **Import:**
-```typescript
-import { UserProfile } from '@/components/user-profile-component';
-```
-- ✅ **Dùng alias `@`** cho thư mục gốc.
-- ✅ **Import từ `index.ts`** khi có.
-
-### 💡 **Export:**
-```typescript
-export default function UserProfile() {}
-export const USER_ROLE = 'admin';
-```
-- ✅ **Component:** Dùng export mặc định.
-- ✅ **Hằng số & hàm tiện ích:** Dùng named export.
-
----
-
-## 📝 **Quy tắc commit message**
-
-### 📜 **Cấu trúc commit:**
-```
-type(scope): subject
-```
-- **type:** feat, fix, chore, refactor, docs.
-- **scope:** phần bị ảnh hưởng (component, page, api).
-- **subject:** mô tả ngắn gọn.
-
-### 💡 **Ví dụ:**
-```bash
-feat(api): thêm chức năng đăng nhập
-fix(component): sửa lỗi giao diện nút đăng ký
-```
-
----
-
-📌 **Tài liệu đã được cập nhật toàn diện với cấu trúc thư mục rõ ràng, hướng dẫn cài đặt, quy tắc ESLint, chuẩn import/export và quy tắc commit.** 🚀✨
+📌 **Tài liệu đã được điều chỉnh với cấu trúc thư mục cụ thể theo hình ảnh đã cung cấp, giữ nguyên nội dung cũ và loại bỏ phần khuyến nghị theo yêu cầu.** 🚀✨
