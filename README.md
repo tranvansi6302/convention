@@ -1,4 +1,4 @@
-# 📚 **Tài Liệu Hướng Dẫn Quy Tắc Viết Mã Dự Án - Chuyên Nghiệp & Chuẩn Hóa**
+# 📚 **Tài Liệu Hướng Dẫn Quy Tắc Viết Mã Dự Án**
 
 ---
 
@@ -51,90 +51,90 @@ pnpm dev
 - **Thư mục:** `kebab-case`, số nhiều.
 - **File:** `kebab-case` (ví dụ: `user-profile.ts`).
 - **Component:** PascalCase (ví dụ: `UserProfile`).
-- **Hook:** `useXyz` (ví dụ: `useUserProfile`).
-- **Trang:** `page-name-page.tsx` (ví dụ: `welcome-page.tsx`).
+- **Hook:** `use-xyz` (ví dụ: `use-user-profile`).
+- **Page:** `page-name-page.tsx` (ví dụ: `welcome-page.tsx`).
 - **Layout:** `layout-name-layout.tsx` (ví dụ: `main-layout.tsx`).
 - **Utils:** `[functionality].util.ts` (ví dụ: `format.util.ts`).
 - **Libs:** `[functionality].lib.ts` (ví dụ: `format-string.lib.ts`).
 
-### 📁 **Cấu trúc thư mục chi tiết:**
+### 📁 **Cấu trúc thư mục chi tiết và giải thích:**
 ```
-├── src/
-│   └── app/
-│       ├── apis/
-│       │   └── users/
-│       │       ├── command/
-│       │       │   └── user.command.api.ts
-│       │       └── query/
-│       │           └── user.query.api.ts
+├── src/                        
+│   └── app/                    
+│       ├── apis/               
+│       │   └── users/          
+│       │       ├── command/    
+│       │       └── query/      
 │       │
-│       ├── assets/
-│       │   ├── images/
-│       │   └── svgs/
+│       ├── assets/             
+│       │   ├── images/         
+│       │   └── svgs/           
 │       │
-│       ├── components/
-│       │   └── my-button/
-│       │       ├── my-button-component.tsx
-│       │       ├── my-button-component.module.scss
-│       │       └── index.ts
+│       ├── components/         
+│       │   └── my-button-component/      
+│       │       ├── my-button-component.tsx  
+│       │       ├── my-button-component.module.scss 
+│       │       └── index.ts    
 │       │
-│       ├── configs/
-│       │   ├── http-status-code.config.ts
-│       │   ├── message.config.ts
-│       │   ├── routes.config.ts
-│       │   └── tanstack-key.config.ts
+│       ├── configs/            
+│       │   ├── *.config.ts     
 │       │
-│       ├── constants/
-│       │   └── file.constant.ts
+│       ├── constants/          
+│       │   └── file.constant.ts 
 │       │
-│       ├── errors/
-│       │   └── error-boundary-handlers/
-│       │       └── error-boundary-handlers.tsx
+│       ├── errors/             
+│       │   └── error-boundary-handlers.tsx  # Xử lý boundary
 │       │
-│       ├── hooks/
+│       ├── hooks/              
 │       │   └── use-responsive.tsx
 │       │
-│       ├── layouts/
-│       │   └── main-layout/
+│       ├── layouts/           
+│       │   └── main-layout/    
 │       │       ├── main-layout.tsx
 │       │       ├── main-layout.module.scss
 │       │       └── index.ts
 │       │
-│       ├── pages/
-│       │   ├── errors/
-│       │   │   └── error-404-page/
-│       │   │       ├── error-404-page.tsx
-│       │   │       ├── error-404-page.module.scss
-│       │   │       └── index.ts
-│       │   └── welcome-page/
-│       │       ├── welcome-page.tsx
-│       │       ├── welcome-page.module.scss
-│       │       └── index.ts
+│       ├── pages/              
+│       │   ├── welcome-page/   
+│       │   │   ├── welcome-page.tsx
+│       │   │   ├── welcome-page.module.scss
+│       │   │   └── index.ts
 │       │
-│       ├── routes/
+│       ├── routes/             
 │       │   └── app-route.tsx
 │       │
-│       ├── shared/
+│       ├── shared/             
 │       │   └── user-example.shared.ts
 │       │
-│       ├── types/
-│       │   ├── commons/
-│       │   │   ├── config-lang/
-│       │   │   └── helpdesk/
-│       │   ├── icons/
+│       ├── types/              
+│       │   ├── icons/          
 │       │   │   ├── requests/icon.type.ts
 │       │   │   └── responses/icon.type.ts
-│       │   └── menu/
 │       │
-│       ├── utils/
-│       │   ├── api.util.ts
+│       ├── utils/              
+│       │   ├── api.util.ts     
 │       │   ├── format.util.ts
 │       │   └── string.util.ts
 │       │
-│       └── query-client.ts
+│       └── query-client.ts     
 │
-└── App.tsx
+└── App.tsx                    
 ```
+
+### 📝 **Giải thích chi tiết:**
+- **apis/**: Chia thành `command` và `query`. File kết thúc bằng `.command.api.ts` hoặc `.query.api.ts`.
+- **assets/**: Tên file `kebab-case`, thư mục con `images`, `svgs`.
+- **components/**: Mỗi component trong thư mục riêng, SCSS kèm theo, `index.ts` để export. Kết thúc bằng -component.tsx`
+- **configs/**: Tất cả file cấu hình kết thúc bằng `.config.ts`.
+- **constants/**: Hằng số dùng chung, kết thúc `.constant.ts`.
+- **errors/**: Quản lý các file xử lý lỗi.
+- **hooks/**: Custom hook, bắt đầu bằng `use`.
+- **layouts/**: Layout chính, SCSS cùng tên, `index.ts` để export. Kết thúc bằng `-layout.tsx`
+- **pages/**: Mỗi trang có thư mục riêng, file chính `page-name.tsx`. Kết thúc bằng `-page.tsx`
+- **routes/**: Cấu hình router tập trung. Kết thúc bằng `-route.ts``
+- **shared/**: Mã dùng chung. Kết thúc bằng `shared.ts`
+- **types/**: Interface và type, PascalCase, tách biệt request/response. Kết thúc bằng `.type.ts`
+- **utils/**: Hàm tiện ích, kết thúc `.util.ts`.
 
 ---
 
@@ -178,31 +178,55 @@ module.exports = {
 ```
 
 ### 📝 **Các quy tắc ESLint quan trọng và cách tránh cảnh báo:**
-- ⚡ **`no-undef`:** Tránh sử dụng biến chưa được khai báo.
-- ⚡ **`@typescript-eslint/no-explicit-any`:** Không sử dụng kiểu `any`. Thay vào đó, hãy xác định kiểu cụ thể.
-- ⚡ **`@typescript-eslint/no-unused-vars`:** Xóa các biến không sử dụng hoặc thêm dấu gạch dưới (`_`) trước tên biến.
-- ⚡ **`react/react-in-jsx-scope`:** Không cần import `React` nếu sử dụng React 17+.
-- ⚡ **`react-hooks/rules-of-hooks`:** Gọi hook đúng vị trí (trong component hoặc custom hook, không trong vòng lặp hoặc điều kiện).
-- ⚡ **`prettier/prettier`:** Cấu hình Prettier để đảm bảo định dạng mã nhất quán.
-- ⚡ **`jsx-a11y/anchor-is-valid`:** Sử dụng thuộc tính `href` hợp lệ cho thẻ `<a>` hoặc thay thế bằng `<button>` nếu cần.
+- ⚡ **`no-undef`**: Không sử dụng biến chưa khai báo.
+- ⚡ **`@typescript-eslint/no-explicit-any`**: Tránh dùng `any`, khai báo kiểu dữ liệu rõ ràng.
+- ⚡ **`@typescript-eslint/no-unused-vars`**: Xóa biến không sử dụng hoặc thêm `_` trước biến.
+- ⚡ **`react-hooks/rules-of-hooks`**: Gọi hook đúng vị trí.
+- ⚡ **`prettier/prettier`**: Đảm bảo định dạng mã nhất quán.
 
 ### 🚫 **Quy tắc comment & Clean Code:**
-- ✅ **Comment rõ ràng:** Giải thích lý do hơn là cách làm.
-- ✅ **Tránh comment không cần thiết:** Mã tự giải thích không cần comment.
-- ✅ **TODO & FIXME:**
-  ```typescript
-  // TODO: Thêm chức năng đăng nhập
-  // FIXME: Sửa lỗi hiển thị giao diện trên di động
-  ```
-- ✅ **Hàm nhỏ gọn, rõ ràng:** Một hàm chỉ nên thực hiện một nhiệm vụ.
-- ✅ **Tên biến, hàm có ý nghĩa:** Ví dụ `getUserProfile()` thay vì `getData()`.
-- ✅ **Tránh magic numbers:**
-  ```typescript
-  const MAX_RETRIES = 3;
-  ```
-- ✅ **Code nhất quán:** Sử dụng ESLint để giữ phong cách mã nhất quán.
-- ✅ **Tách logic phức tạp:** Nếu hàm quá dài, chia nhỏ thành các hàm con.
+- ✅ **Comment rõ ràng:** Giải thích lý do hơn cách làm.
+- ✅ **TODO & FIXME:** Sử dụng chuẩn để đánh dấu công việc.
+- ✅ **Hàm nhỏ gọn, rõ ràng:** Một hàm chỉ làm một việc.
+- ✅ **Tên biến, hàm có ý nghĩa:** Tránh tên chung chung.
+- ✅ **Tránh magic numbers:** Sử dụng hằng số thay vì số trực tiếp.
+
+  ---
+
+  ## 🌿 **Quy tắc Git (Tách nhánh & Commit)**
+
+### 🌿 **Tách nhánh (Branching):**
+- **main/master:** Phiên bản sản xuất (production-ready).
+- **develop:** Phiên bản phát triển (tích hợp các nhánh feature).
+- **feature/**: Tính năng mới (ví dụ: `feature/login-page`).
+- **bugfix/**: Sửa lỗi (ví dụ: `bugfix/fix-header-bug`).
+- **hotfix/**: Sửa lỗi gấp trên production (ví dụ: `hotfix/fix-payment-crash`).
+- **release/**: Chuẩn bị phát hành (ví dụ: `release/v1.0.0`).
+
+### 📝 **Quy tắc commit:**
+
+#### 📜 **Cấu trúc commit:**
+```
+type(scope): subject
+```
+- **type:** feat, fix, chore, refactor, docs, test, style.
+- **scope:** Thành phần bị ảnh hưởng (component, page, api).
+- **subject:** Mô tả ngắn gọn.
+
+#### 💡 **Ví dụ:**
+```bash
+feat(api): thêm chức năng đăng nhập
+fix(component): sửa lỗi giao diện nút đăng ký
+refactor(hooks): tối ưu useAuth hook
+style(layout): điều chỉnh CSS cho header
+```
+
+#### 🎯 **Best Practices khi commit:**
+- ✅ Commit ngắn gọn, rõ ràng.
+- ✅ Tránh commit các file không cần thiết (node_modules, build).
+- ✅ Sử dụng dấu gạch ngang để phân tách từ trong scope.
+- ✅ Tránh commit code chưa hoàn thiện (sử dụng `WIP` nếu cần thiết).
 
 ---
 
-📌 **Tài liệu đã được cập nhật với cấu hình ESLint chi tiết, các quy tắc được định nghĩa trong ESLint để tránh cảnh báo và quy tắc clean code, đảm bảo mã nguồn dễ đọc, dễ bảo trì và chất lượng cao.** 🚀✨
+
